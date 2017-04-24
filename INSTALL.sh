@@ -25,7 +25,10 @@ else
   useradd -m katkola -s /usr/sbin/nologin
   mkdir -p "$KATKO_SFTP_BASEDIR/katkola/private"
   cp -r public_html "$KATKO_SFTP_BASEDIR/katkola/"
-  chown -R katkola: "$KATKO_SFTP_BASEDIR/katkola"
+  chown -R katkola: "$KATKO_SFTP_BASEDIR/katkola/private"
+  chown -R katkola: "$KATKO_SFTP_BASEDIR/katkola/public_html"
+  chmod -R g+w      "$KATKO_SFTP_BASEDIR/katkola/private"
+  chmod -R g+w      "$KATKO_SFTP_BASEDIR/katkola/public_html"
   ln -s "$KATKO_SFTP_BASEDIR/katkola/public_html" "/home/katkola/public_html"
   chown katkola: "/home/katkola/public_html"
 fi
